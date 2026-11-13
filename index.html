@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CURLY'S: productos, accesorios y consejos para cuidar tus rizos naturales.">
+<title>CURLY'S | Tus rizos, tu esencia</title>
+<style>
+:root{
+  --choco:#593522;--brown:#80543c;--caramel:#b97855;--sand:#dfb69e;
+  --blush:#f2d9ce;--cream:#fff8f1;--paper:#fffdf9;--ink:#39291f;
+  --muted:#806f63;--line:#ead8ca;--shadow:0 18px 45px rgba(89,53,34,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family: "Trebuchet MS",Arial,sans-serif;line-height:1.6}
+button,input,textarea{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+.topline{background:var(--choco);color:#fff4ea;text-align:center;padding:8px 16px;font-size:.82rem;letter-spacing:.04em}
+header{position:sticky;top:0;z-index:20;background:rgba(255,248,241,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1160px;margin:auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--choco);font-size:1.55rem;letter-spacing:-.06em}
+.brand-mark{width:40px;height:40px;border:2px solid var(--brown);border-radius:50%;display:grid;place-items:center;background:var(--blush);font-size:1.25rem}
+.brand small{display:block;font-size:.58rem;letter-spacing:.08em;font-weight:600;color:var(--muted);line-height:1}
+nav{display:flex;gap:24px;align-items:center;font-size:.93rem;font-weight:700;color:var(--brown)}
+nav a:hover{color:var(--caramel)}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.cart-btn,.menu-btn{border:1px solid var(--line);background:var(--paper);color:var(--choco);border-radius:999px;padding:9px 14px;cursor:pointer;font-weight:800}
+.cart-count{display:inline-grid;place-items:center;background:var(--brown);color:white;width:21px;height:21px;border-radius:50%;font-size:.75rem;margin-left:4px}
+.menu-btn{display:none}
+.wrap{max-width:1160px;margin:auto;padding-left:24px;padding-right:24px}
+.hero{padding:64px 0 54px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center}
+.eyebrow{color:var(--caramel);font-weight:900;letter-spacing:.16em;text-transform:uppercase;font-size:.76rem}
+h1,h2,h3{font-family:Georgia,serif;line-height:1.08;color:var(--choco);margin:0 0 16px}
+h1{font-size:clamp(2.8rem,6vw,5.3rem);letter-spacing:-.055em}
+h1 em{color:var(--caramel);font-weight:400}
+.hero p{max-width:540px;color:var(--muted);font-size:1.08rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;background:var(--choco);color:white;padding:13px 21px;font-weight:800;cursor:pointer;transition:.2s;box-shadow:0 8px 20px rgba(89,53,34,.15)}
+.btn:hover{transform:translateY(-2px);background:var(--brown)}
+.btn.secondary{background:transparent;color:var(--choco);border:1px solid var(--brown);box-shadow:none}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero-note{margin-top:24px;color:var(--muted);font-size:.86rem}
+.hero-art{min-height:440px;position:relative;border-radius:48% 48% 28px 28px;background:linear-gradient(145deg,#f5ded2,#e7bda6 58%,#c98e70);display:grid;place-items:center;overflow:hidden;box-shadow:var(--shadow)}
+.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.55);border-radius:50%;width:370px;height:370px}
+.hero-art:after{width:460px;height:460px}
+.curl-girl{position:relative;z-index:2;width:245px;height:300px;border-radius:48% 48% 22% 22%;background:linear-gradient(150deg,#f4d9c8,#fff0e5);display:flex;align-items:flex-end;justify-content:center}
+.curl-girl:before{content:"";position:absolute;top:-22px;width:260px;height:270px;border-radius:48% 48% 38% 38%;background:repeating-radial-gradient(ellipse at 50% 20%,#4a281b 0 10px,#70432e 11px 17px,#321b14 18px 23px);clip-path:polygon(12% 0,88% 0,100% 88%,82% 100%,75% 45%,25% 45%,18% 100%,0 88%)}
+.face{position:relative;z-index:3;width:128px;height:165px;background:#c98665;border-radius:48% 48% 44% 44%;margin-bottom:35px;border:3px solid #8b5038}
+.face:before{content:"";position:absolute;top:68px;left:30px;width:12px;height:4px;border-radius:50%;background:#42271d;box-shadow:54px 0 #42271d}
+.face:after{content:"⌣";position:absolute;left:51px;top:91px;color:#6c3028;font-size:28px}
+.float-tag{position:absolute;z-index:4;background:var(--paper);color:var(--brown);padding:10px 15px;border-radius:18px;box-shadow:var(--shadow);font-weight:800}
+.tag-one{top:48px;left:22px;transform:rotate(-7deg)}.tag-two{right:20px;bottom:55px;transform:rotate(5deg)}
+.spark{position:absolute;color:#fff7ed;font-size:2rem;z-index:4}
+.s1{top:70px;right:70px}.s2{bottom:75px;left:60px}
+.section{padding:70px 0}
+.section.alt{background:#f8eee6}
+.section-head{text-align:center;max-width:680px;margin:0 auto 34px}
+.section-head h2{font-size:clamp(2rem,4vw,3.2rem)}
+.section-head p{color:var(--muted);margin:0}
+.pill{display:inline-block;background:var(--blush);color:var(--brown);border-radius:999px;padding:6px 13px;font-size:.78rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:23px;text-align:center}
+.feature-icon{font-size:2rem;background:var(--blush);width:62px;height:62px;border-radius:50%;display:grid;place-items:center;margin:0 auto 13px}
+.feature h3{font-size:1.25rem;margin-bottom:8px}.feature p{margin:0;color:var(--muted);font-size:.92rem}
+.filters{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:0 0 26px}
+.filter{border:1px solid var(--line);background:var(--paper);color:var(--brown);border-radius:999px;padding:9px 16px;cursor:pointer;font-weight:800}
+.filter.active,.filter:hover{background:var(--choco);color:white;border-color:var(--choco)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.2s}
+.product:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.product-art{height:190px;display:grid;place-items:center;background:linear-gradient(145deg,#f8e8dd,#efd0bf);position:relative}
+.bottle{width:82px;height:125px;border-radius:18px 18px 13px 13px;background:linear-gradient(90deg,#f9eee4,#fffaf5 55%,#e8c8b5);box-shadow:12px 12px 20px #a56c4a33;position:relative;border:1px solid #d9b9a5}
+.bottle:before{content:"";position:absolute;top:-17px;left:23px;width:34px;height:19px;border-radius:6px 6px 2px 2px;background:#80543c}
+.bottle.jar{height:78px;width:112px;border-radius:15px 15px 20px 20px;margin-top:28px}
+.bottle.jar:before{top:-12px;left:-2px;width:114px;height:13px;border-radius:6px;background:#80543c}
+.bottle-label{position:absolute;top:43%;left:4px;right:4px;text-align:center;font-size:.63rem;font-weight:900;color:var(--choco);line-height:1.2}
+.product-info{padding:17px}
+.product-info h3{font-size:1.15rem;margin:0 0 5px}
+.product-info p{font-size:.87rem;color:var(--muted);min-height:43px;margin:0 0 12px}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{font-weight:900;color:var(--choco)}
+.add{border:0;border-radius:50%;width:38px;height:38px;background:var(--blush);color:var(--choco);font-size:1.3rem;cursor:pointer;font-weight:900}
+.add:hover{background:var(--choco);color:white}
+.routine-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center}
+.routine-card{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow)}
+.routine-card h3{font-size:1.7rem}
+.steps{display:grid;gap:12px}
+.step{display:flex;gap:13px;align-items:flex-start;background:#fffaf5;border:1px solid var(--line);border-radius:16px;padding:14px}
+.step-num{flex:0 0 34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--brown);color:white;font-weight:900}
+.step b{color:var(--choco)}.step p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+.tip{margin-top:16px;padding:13px 15px;border-left:4px solid var(--caramel);background:var(--blush);border-radius:0 12px 12px 0;color:var(--brown);font-size:.9rem}
+.care-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.care-card{padding:23px;border-radius:22px;background:var(--paper);border:1px solid var(--line)}
+.care-card .emoji{font-size:1.8rem}.care-card h3{font-size:1.2rem;margin:8px 0}.care-card p{color:var(--muted);font-size:.91rem;margin:0}
+.faq{max-width:780px;margin:auto;display:grid;gap:10px}
+details{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:16px 18px}
+summary{cursor:pointer;font-weight:900;color:var(--choco)}
+details p{color:var(--muted);margin:10px 0 0}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px}
+.contact-panel{background:var(--choco);color:#fff3e9;border-radius:24px;padding:28px}
+.contact-panel h3{color:#fff3e9;font-size:1.8rem}
+.contact-panel p{color:#e8cdbb}
+.socials{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap}
+.socials a{border:1px solid #b98e76;border-radius:999px;padding:8px 12px;font-size:.85rem}
+form{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:26px}
+.field{display:grid;gap:6px;margin-bottom:13px}
+label{font-weight:800;color:var(--brown);font-size:.9rem}
+input,textarea{width:100%;border:1px solid var(--line);background:#fffaf5;border-radius:12px;padding:12px;color:var(--ink);outline:none}
+input:focus,textarea:focus{border-color:var(--caramel);box-shadow:0 0 0 3px #dfb69e55}
+textarea{min-height:100px;resize:vertical}
+.form-msg{font-size:.9rem;color:var(--brown);font-weight:800;margin-top:10px;min-height:20px}
+footer{background:#39251a;color:#f8e9de;padding:30px 24px;text-align:center}
+footer b{font-family:Georgia,serif;font-size:1.6rem}footer p{margin:4px 0;color:#d9bba7;font-size:.86rem}
+.toast{position:fixed;right:22px;bottom:22px;background:var(--choco);color:white;padding:13px 18px;border-radius:14px;box-shadow:var(--shadow);z-index:50;opacity:0;transform:translateY(15px);transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:translateY(0)}
+.cart-panel{position:fixed;inset:0 0 0 auto;width:min(390px,100%);background:var(--paper);z-index:40;box-shadow:-20px 0 50px #39251a22;padding:24px;transform:translateX(110%);transition:.3s;display:flex;flex-direction:column}
+.cart-panel.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:14px}
+.cart-head h3{margin:0;font-size:1.5rem}
+.close{border:0;background:var(--blush);color:var(--choco);border-radius:50%;width:36px;height:36px;font-size:1.2rem;cursor:pointer}
+.cart-items{flex:1;overflow:auto;padding:12px 0}
+.cart-line{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.cart-total{border-top:1px solid var(--line);padding-top:15px;font-weight:900;display:flex;justify-content:space-between}
+.overlay{position:fixed;inset:0;background:#24150f66;z-index:35;opacity:0;pointer-events:none;transition:.3s}
+.overlay.show{opacity:1;pointer-events:auto}
+@media(max-width:850px){
+ nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:18px 24px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}
+ nav.open{display:flex}.menu-btn{display:inline-block}
+ .hero-grid,.routine-grid,.contact-grid{grid-template-columns:1fr}
+ .hero-art{min-height:370px}.products{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+ .wrap{padding-left:17px;padding-right:17px}.nav{padding:11px 16px}.brand{font-size:1.3rem}
+ .hero{padding:42px 0}.hero-art{min-height:310px}.curl-girl{transform:scale(.82)}
+ .features,.care-grid{grid-template-columns:1fr}.products{gap:11px}.product-art{height:145px}
+ .product-info{padding:13px}.product-info p{min-height:58px;font-size:.8rem}
+ .section{padding:52px 0}.hero-buttons .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="topline">♡ Cuidado, definición y amor para tus rizos · Bienvenida a CURLY’S ♡</div>
+<header>
+  <div class="nav">
+    <a class="brand" href="#inicio"><span class="brand-mark">〰</span><span>CURLY’S<small>TUS RIZOS, TU ESENCIA</small></span></a>
+    <nav id="navLinks">
+      <a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#rutina">Rutina</a><a href="#consejos">Consejos</a><a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="cart-btn" id="openCart" aria-label="Abrir carrito">Bolsa <span class="cart-count" id="cartCount">0</span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+ <div class="wrap hero-grid">
+  <div>
+   <div class="eyebrow">Una rutina hecha para ti</div>
+   <h1>Tus rizos,<br><em>tu esencia.</em></h1>
+   <p>En CURLY’S celebramos la belleza de cada rizo. Encuentra productos y accesorios para acompañar tu cuidado capilar y aprende a crear una rutina que se adapte a tu cabello.</p>
+   <div class="hero-buttons"><a class="btn" href="#productos">Descubrir productos <span>→</span></a><a class="btn secondary" href="#rutina">Conocer mi rutina</a></div>
+   <div class="hero-note">♡ Hidratación · Definición · Cuidado diario</div>
+  </div>
+  <div class="hero-art" aria-label="Ilustración decorativa de rizos">
+   <span class="float-tag tag-one">Rizos con personalidad ♡</span><span class="float-tag tag-two">Amor en cada rizo</span>
+   <span class="spark s1">✦</span><span class="spark s2">♡</span>
+   <div class="curl-girl"><div class="face"></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section alt">
+ <div class="wrap">
+  <div class="section-head"><span class="pill">Nuestra esencia</span><h2>Todo lo que tus rizos necesitan</h2><p>Queremos acompañarte con productos, accesorios e información sencilla para que conozcas mejor tu cabello.</p></div>
+  <div class="features">
+   <article class="feature"><div class="feature-icon">💧</div><h3>Hidratación</h3><p>Encuentra opciones para cuidar la suavidad y acondicionamiento de tu cabello.</p></article>
+   <article class="feature"><div class="feature-icon">〰️</div><h3>Definición</h3><p>Conoce productos que ayudan a dar forma y mantener tus rizos definidos.</p></article>
+   <article class="feature"><div class="feature-icon">♡</div><h3>Amor por tus rizos</h3><p>Aprende a cuidar tu cabello con una rutina práctica y constante.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="productos">
+ <div class="wrap">
+  <div class="section-head"><span class="pill">Nuestra tienda</span><h2>Encuentra tus favoritos</h2><p>Explora la colección de CURLY’S. Los precios son referenciales para esta maqueta escolar.</p></div>
+  <div class="filters" id="filters">
+   <button class="filter active" data-filter="todos">Todos</button><button class="filter" data-filter="tratamiento">Tratamientos</button><button class="filter" data-filter="limpieza">Limpieza</button><button class="filter" data-filter="definicion">Definición</button><button class="filter" data-filter="accesorios">Accesorios</button>
+  </div>
+  <div class="products" id="productGrid">
+   <article class="product" data-category="definicion"><div class="product-art"><div class="bottle"><span class="bottle-label">CURLY’S<br>CREMA PARA PEINAR</span></div></div><div class="product-info"><h3>Crema para peinar</h3><p>Para acondicionar y facilitar el peinado de tus rizos.</p><div class="product-bottom"><span class="price">S/ 32.00</span><button class="add" data-name="Crema para peinar" data-price="32" aria-label="Agregar crema">+</button></div></div></article>
+   <article class="product" data-category="definicion"><div class="product-art"><div class="bottle"><span class="bottle-label">CURLY’S<br>GEL PARA RIZOS</span></div></div><div class="product-info"><h3>Gel para rizos</h3><p>Ayuda a mantener la forma y definición del peinado.</p><div class="product-bottom"><span class="price">S/ 28.00</span><button class="add" data-name="Gel para rizos" data-price="28" aria-label="Agregar gel">+</button></div></div></article>
+   <article class="product" data-category="limpieza"><div class="product-art"><div class="bottle"><span class="bottle-label">CURLY’S<br>SHAMPOO</span></div></div><div class="product-info"><h3>Shampoo</h3><p>Para limpiar el cabello y el cuero cabelludo.</p><div class="product-bottom"><span class="price">S/ 30.00</span><button class="add" data-name="Shampoo" data-price="30" aria-label="Agregar shampoo">+</button></div></div></article>
+   <article class="product" data-category="tratamiento"><div class="product-art"><div class="bottle jar"><span class="bottle-label">CURLY’S<br>MASCARILLA</span></div></div><div class="product-info"><h3>Mascarilla capilar</h3><p>Un paso de acondicionamiento para tu rutina semanal.</p><div class="product-bottom"><span class="price">S/ 36.00</span><button class="add" data-name="Mascarilla capilar" data-price="36" aria-label="Agregar mascarilla">+</button></div></div></article>
+   <article class="product" data-category="accesorios"><div class="product-art"><div style="font-size:5rem">🎀</div></div><div class="product-info"><h3>Scrunchie de satén</h3><p>Un accesorio suave para recoger tu cabello.</p><div class="product-bottom"><span class="price">S/ 12.00</span><button class="add" data-name="Scrunchie de satén" data-price="12" aria-label="Agregar scrunchie">+</button></div></div></article>
+   <article class="product" data-category="accesorios"><div class="product-art"><div style="font-size:5rem">🪮</div></div><div class="product-info"><h3>Peine de dientes anchos</h3><p>Ideal para desenredar con cuidado, preferentemente con acondicionador.</p><div class="product-bottom"><span class="price">S/ 18.00</span><button class="add" data-name="Peine de dientes anchos" data-price="18" aria-label="Agregar peine">+</button></div></div></article>
+   <article class="product" data-category="accesorios"><div class="product-art"><div style="font-size:5rem">🌙</div></div><div class="product-info"><h3>Gorro de satén</h3><p>Ayuda a reducir la fricción del cabello durante el descanso.</p><div class="product-bottom"><span class="price">S/ 25.00</span><button class="add" data-name="Gorro de satén" data-price="25" aria-label="Agregar gorro">+</button></div></div></article>
+   <article class="product" data-category="tratamiento"><div class="product-art"><div style="font-size:5rem">✨</div></div><div class="product-info"><h3>Kit de cuidado</h3><p>Una combinación de productos para empezar tu rutina.</p><div class="product-bottom"><span class="price">S/ 85.00</span><button class="add" data-name="Kit de cuidado" data-price="85" aria-label="Agregar kit">+</button></div></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section alt" id="rutina">
+ <div class="wrap routine-grid">
+  <div class="routine-card">
+   <span class="pill">Tu momento CURLY’S</span><h3>Una rutina sencilla para tus rizos</h3>
+   <p style="color:var(--muted)">Cada cabello es diferente. Ajusta los pasos según sus necesidades y las indicaciones de los productos que utilices.</p>
+   <button class="btn" id="routineBtn">Ver mi rutina sugerida ✨</button>
+   <div class="tip" id="routineTip">Presiona el botón para descubrir una rutina básica de cuidado.</div>
+  </div>
+  <div class="steps">
+   <div class="step"><span class="step-num">1</span><div><b>Limpia</b><p>Utiliza shampoo adecuado y masajea suavemente el cuero cabelludo.</p></div></div>
+   <div class="step"><span class="step-num">2</span><div><b>Acondiciona</b><p>Aplica acondicionador o mascarilla según las instrucciones del producto.</p></div></div>
+   <div class="step"><span class="step-num">3</span><div><b>Define</b><p>Distribuye crema para peinar y, si lo deseas, gel para ayudar a definir.</p></div></div>
+   <div class="step"><span class="step-num">4</span><div><b>Cuida</b><p>Desenreda con delicadeza y elige accesorios que reduzcan la fricción.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="consejos">
+ <div class="wrap">
+  <div class="section-head"><span class="pill">Rincón de rizos</span><h2>Pequeños consejos, mucho cariño</h2><p>Ideas generales para conocer y cuidar tu cabello rizado.</p></div>
+  <div class="care-grid">
+   <article class="care-card"><div class="emoji">💦</div><h3>Hidrata según tu cabello</h3><p>Observa cómo responde tu cabello a los productos y adapta la frecuencia de uso a sus necesidades.</p></article>
+   <article class="care-card"><div class="emoji">🪮</div><h3>Desenreda con paciencia</h3><p>Hazlo suavemente, por secciones y con el cabello húmedo y acondicionado si así te funciona mejor.</p></article>
+   <article class="care-card"><div class="emoji">🌙</div><h3>Protege tus rizos</h3><p>Prueba accesorios de satén para reducir el roce mientras descansas.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section alt">
+ <div class="wrap">
+  <div class="section-head"><span class="pill">Preguntas frecuentes</span><h2>¿Tienes dudas?</h2><p>Respuestas rápidas para comenzar a conocer CURLY’S.</p></div>
+  <div class="faq">
+   <details><summary>¿Los productos sirven para todos los tipos de rizos?</summary><p>Las necesidades varían según cada cabello. Revisa las características e indicaciones de cada producto antes de elegirlo.</p></details>
+   <details><summary>¿Cómo sé qué producto necesito?</summary><p>Identifica qué buscas en tu rutina: limpieza, acondicionamiento, definición o accesorios. Si tienes dudas, puedes escribirnos para recibir orientación general.</p></details>
+   <details><summary>¿Puedo combinar crema para peinar y gel?</summary><p>Muchas rutinas combinan ambos productos. Prueba pequeñas cantidades y sigue las instrucciones de cada envase para ver cómo responde tu cabello.</p></details>
+   <details><summary>¿Los precios y productos de esta página son reales?</summary><p>Esta página es una maqueta demostrativa para el proyecto escolar. Los precios, redes y datos de contacto son ejemplos y no representan una tienda activa.</p></details>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="contacto">
+ <div class="wrap">
+  <div class="section-head"><span class="pill">Estamos para ayudarte</span><h2>Hablemos de tus rizos</h2><p>Déjanos tu consulta en el formulario de demostración.</p></div>
+  <div class="contact-grid">
+   <div class="contact-panel"><h3>CURLY’S ♡</h3><p>Gracias por visitar nuestro espacio. Síguenos para descubrir productos, ideas y consejos para tus rizos.</p><p><b>Instagram:</b> @curlys.pe<br><b>TikTok:</b> @curlys.pe<br><b>Facebook:</b> CURLY’S Perú<br><b>Correo:</b> contacto@curlys.pe</p><div class="socials"><a href="#contacto" aria-label="Instagram">Instagram</a><a href="#contacto" aria-label="TikTok">TikTok</a><a href="#contacto" aria-label="Facebook">Facebook</a></div><p style="font-size:.78rem">Perfiles y correo de ejemplo para el trabajo escolar.</p></div>
+   <form id="contactForm">
+    <div class="field"><label for="name">Tu nombre</label><input id="name" name="name" placeholder="Escribe tu nombre" required></div>
+    <div class="field"><label for="email">Tu correo</label><input id="email" name="email" type="email" placeholder="tunombre@correo.com" required></div>
+    <div class="field"><label for="message">¿En qué podemos ayudarte?</label><textarea id="message" name="message" placeholder="Escribe tu consulta..." required></textarea></div>
+    <button class="btn" type="submit">Enviar consulta ♡</button><div class="form-msg" id="formMsg" aria-live="polite"></div>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+<footer><b>CURLY’S ♡</b><p>Tus rizos, tu esencia, tu belleza.</p><p>Proyecto de marketing digital · Sitio web demostrativo</p><p>© 2026 CURLY’S</p></footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="cart-panel" id="cartPanel" aria-label="Bolsa de compras">
+ <div class="cart-head"><h3>Tu bolsa ♡</h3><button class="close" id="closeCart" aria-label="Cerrar bolsa">×</button></div>
+ <div class="cart-items" id="cartItems"><p style="color:var(--muted)">Todavía no agregaste productos.</p></div>
+ <div class="cart-total"><span>Total referencial</span><span id="cartTotal">S/ 0.00</span></div>
+ <p style="font-size:.78rem;color:var(--muted)">Carrito interactivo de demostración. No procesa pagos ni pedidos reales.</p>
+</aside>
+<div class="toast" id="toast" role="status">Producto agregado ♡</div>
+<script>
+const $ = (s)=>document.querySelector(s);
+const $$ = (s)=>document.querySelectorAll(s);
+const cart=[];
+function showToast(message){const t=$("#toast");t.textContent=message;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2100)}
+$("#menuBtn").addEventListener("click",()=>$("#navLinks").classList.toggle("open"));
+$$("nav a").forEach(a=>a.addEventListener("click",()=>$("#navLinks").classList.remove("open")));
+$("#filters").addEventListener("click",e=>{
+ const b=e.target.closest("button[data-filter]");if(!b)return;
+ $$(".filter").forEach(x=>x.classList.toggle("active",x===b));
+ $$(".product").forEach(p=>p.style.display=(b.dataset.filter==="todos"||p.dataset.category===b.dataset.filter)?"":"none");
+});
+function renderCart(){
+ $("#cartCount").textContent=cart.reduce((n,x)=>n+x.qty,0);
+ const box=$("#cartItems");box.innerHTML="";
+ if(!cart.length){box.innerHTML='<p style="color:var(--muted)">Todavía no agregaste productos.</p>'}
+ cart.forEach(item=>{const line=document.createElement("div");line.className="cart-line";line.innerHTML=`<span>${item.name}<br><small>Cantidad: ${item.qty}</small></span><b>S/ ${(item.price*item.qty).toFixed(2)}</b>`;box.appendChild(line)});
+ const total=cart.reduce((n,x)=>n+x.price*x.qty,0);$("#cartTotal").textContent="S/ "+total.toFixed(2);
+}
+$$(".add").forEach(btn=>btn.addEventListener("click",()=>{
+ const name=btn.dataset.name,price=Number(btn.dataset.price);let item=cart.find(x=>x.name===name);
+ if(item)item.qty++;else cart.push({name,price,qty:1});renderCart();showToast(name+" agregado a tu bolsa ♡");
+}));
+function toggleCart(open){$("#cartPanel").classList.toggle("open",open);$("#overlay").classList.toggle("show",open)}
+$("#openCart").addEventListener("click",()=>toggleCart(true));$("#closeCart").addEventListener("click",()=>toggleCart(false));$("#overlay").addEventListener("click",()=>toggleCart(false));
+$("#routineBtn").addEventListener("click",()=>{
+ const tips=[
+ "Comienza con la limpieza. Luego acondiciona, desenreda con suavidad y aplica tus productos de definición.",
+ "Prueba aplicar la crema para peinar por secciones y añade gel si deseas más fijación. Ajusta las cantidades a tu cabello.",
+ "Al terminar, evita manipular demasiado tus rizos mientras se secan. Observa qué técnica te funciona mejor."
+ ];
+ const tip=$("#routineTip");tip.textContent=tips[Math.floor(Math.random()*tips.length)];
+});
+$("#contactForm").addEventListener("submit",e=>{
+ e.preventDefault();$("#formMsg").textContent="¡Gracias! Tu mensaje se registró en esta demostración. No se envió a una tienda real.";
+ e.target.reset();
+});
+</script>
+</body>
+</html>
